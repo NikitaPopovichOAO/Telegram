@@ -19,7 +19,7 @@ def start(message: telebot.types.Message):
            f"Введите команду /values \n" \
            f"Я умею конвертировать валюту \n" \
            f"по команде /convert \n" \
-           f"Формат ввода валют: USD RUB 10"
+           f"Формат ввода валют: USD RUB 1"
     bot.send_message(message.chat.id, text)
 
 @bot.message_handler(commands=['values'])
@@ -49,7 +49,7 @@ def exchange_curr_handler(message: telebot.types.Message, base_curr):
 
 def amount_handler(message: telebot.types.Message, base_curr, exchange_curr):
     amount = message.text.strip()
-    exchange_amount = Converter.get_exchange_amount(base_curr, exchange_curr, amount)
+    exchange_amount = Converter.get_price(base_curr, exchange_curr, amount)
     text = f"Цена {amount}  {base_curr} в {exchange_curr} : {exchange_amount}"
     bot.send_message(message.chat.id, text)
 

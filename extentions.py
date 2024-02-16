@@ -5,7 +5,7 @@ class APIException(Exception):
 
 class Converter:
     @staticmethod
-    def get_exchange_amount(base_curr, exchange_curr, amount):
+    def get_price(base_curr, exchange_curr, amount):
         data = requests.get('https://www.cbr-xml-daily.ru/daily_json.js').json()
         if base_curr != "RUB":
             try:
